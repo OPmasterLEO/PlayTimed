@@ -1,0 +1,9 @@
+name: PlayTimed
+version: '1.0'
+main: com.frxnklxrd.playtimed.Main
+author: leqop#0
+api-version: 1.21.4
+folia-supported: true
+website: https://github.com/leqop0/PlayTimed
+description: PlayTimed plugin for Paper/Folia 1.21.4
+# Supported platforms: Paper, Folia, Spigot (auto-detected)
