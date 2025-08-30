@@ -1,13 +1,13 @@
-package com.frxnklxrd.playtimed;
+package net.opmasterleo.playtimed;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
+   @Override
    public void onEnable() {
       this.registerExpansion();
-      this.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&fPlugin created by &aFrxnklxrd"));
+      this.getLogger().info("Plugin created by OPmasterLEO (Discord: leqop)");
    }
 
    private void registerExpansion() {

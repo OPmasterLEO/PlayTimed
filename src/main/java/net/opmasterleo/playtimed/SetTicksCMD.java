@@ -1,4 +1,4 @@
-package com.frxnklxrd.playtimed;
+package net.opmasterleo.playtimed;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Statistic;
@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class SetTicksCMD implements CommandExecutor {
+   @Override
    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
       if (!sender.hasPermission("playtimed.admin")) {
          return false;

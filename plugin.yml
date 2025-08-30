@@ -1,6 +1,0 @@
-name: PlayTimed
-version: '2.0'
-main: com.frxnklxrd.playtimed.Main
-author: OPmasterLEO
-folia-supported: true
-api-version: 1.20
