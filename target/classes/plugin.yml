@@ -1,8 +1,8 @@
-name: ${project.name}
-version: ${project.version}
+name: PlayTimed
+version: 2.1
 main: net.opmasterleo.playtimed.Main
 author: OPmasterLEO
-description: ${project.description}
+description: PlayTimed plugin
 folia-supported: true
 api-version: 1.21
 
