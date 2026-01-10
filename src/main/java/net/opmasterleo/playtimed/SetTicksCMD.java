@@ -1,7 +1,6 @@
 package net.opmasterleo.playtimed;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Statistic;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -10,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.opmasterleo.playtimed.nms.StatisticHandler;
 
 public class SetTicksCMD implements CommandExecutor {
    
@@ -59,7 +59,7 @@ public class SetTicksCMD implements CommandExecutor {
 
          plugin.runSync(() -> {
             try {
-               target.setStatistic(Statistic.PLAY_ONE_MINUTE, ticks);
+               StatisticHandler.setPlayTime(target, ticks);
                
                long seconds = ticks / 20L;
                long hours = seconds / 3600;

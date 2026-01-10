@@ -5,8 +5,7 @@ import java.util.function.Supplier;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.github.Anon8281.universalScheduler.UniversalScheduler;
-import com.github.Anon8281.universalScheduler.scheduling.schedulers.TaskScheduler;
+import net.opmasterleo.playtimed.scheduler.TaskScheduler;
 
 public final class Main extends JavaPlugin {
    private static Main instance;
@@ -15,7 +14,7 @@ public final class Main extends JavaPlugin {
    @Override
    public void onEnable() {
       instance = this;
-      scheduler = UniversalScheduler.getScheduler(this);
+      scheduler = new TaskScheduler(this);
       registerCommands();
       
       getLogger().info(String.format("PlayTimed v%s has been enabled!", getPluginMeta().getVersion()));
@@ -26,7 +25,7 @@ public final class Main extends JavaPlugin {
    @Override
    public void onDisable() {
       if (scheduler != null) {
-         scheduler.cancelTasks(this);
+         scheduler.cancelTasks();
       }
       
       getLogger().info("PlayTimed has been disabled!");

@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "net.opmasterleo"
-version = "2.1"
+version = "3"
 
 repositories {
     mavenCentral()
@@ -17,8 +17,6 @@ dependencies {
     paperweight.paperDevBundle("1.21.11-R0.1-SNAPSHOT")
 
     compileOnly("org.jetbrains:annotations:26.0.2")
-
-    implementation("com.github.Anon8281:UniversalScheduler:0.1.7")
 }
 
 tasks {
@@ -29,8 +27,6 @@ tasks {
 
     shadowJar {
         archiveFileName.set("${project.name}-v${project.version}.jar")
-
-        relocate("com.github.Anon8281.universalScheduler", "net.opmasterleo.playtimed.universalScheduler")
         
         configurations = listOf(project.configurations.getByName("runtimeClasspath"))
     }
