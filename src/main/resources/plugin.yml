@@ -1,8 +1,8 @@
-name: ${project.name}
-version: ${project.version}
+name: ${name}
+version: ${version}
 main: net.opmasterleo.playtimed.Main
 author: OPmasterLEO
-description: ${project.description}
+description: ${description}
 folia-supported: true
 api-version: 1.21
 

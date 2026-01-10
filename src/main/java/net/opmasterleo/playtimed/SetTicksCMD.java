@@ -26,7 +26,6 @@ public class SetTicksCMD implements CommandExecutor {
          return true;
       }
 
-      // Validate arguments
       if (args.length < 2) {
          sender.sendMessage(Component.text("Usage: /setticks <player> <ticks>")
                .color(NamedTextColor.RED));
