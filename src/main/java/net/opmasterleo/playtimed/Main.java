@@ -18,7 +18,7 @@ public final class Main extends JavaPlugin {
       registerCommands();
       
       getLogger().info(String.format("PlayTimed v%s has been enabled!", getPluginMeta().getVersion()));
-      getLogger().info("Plugin created by OPmasterLEO (Discord: leqop)");
+      getLogger().info("Plugin created by OPmasterLEO (Discord: opmasterleo)");
       getLogger().info("Using Minecraft's PLAY_ONE_MINUTE statistic for playtime tracking");
    }
 
