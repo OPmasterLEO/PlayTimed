@@ -4,15 +4,4 @@ main: net.opmasterleo.playtimed.Main
 author: OPmasterLEO
 description: ${description}
 folia-supported: true
-api-version: 1.21
-
-commands:
-  setticks:
-    description: Set a player's playtime ticks
-    usage: /<command> <player> <ticks>
-    permission: playtimed.admin
-    permission-message: You don't have permission to use this command!
-permissions:
-  playtimed.admin:
-    description: Allows use of admin commands to modify player playtime
-    default: op
+api-version: 1.13

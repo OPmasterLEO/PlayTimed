@@ -11,16 +11,16 @@ public final class Main extends JavaPlugin {
    private static Main instance;
    private static TaskScheduler scheduler;
 
-   @Override
-   public void onEnable() {
-      instance = this;
-      scheduler = new TaskScheduler(this);
-      registerCommands();
-      
-      getLogger().info(String.format("PlayTimed v%s has been enabled!", getPluginMeta().getVersion()));
-      getLogger().info("Plugin created by OPmasterLEO (Discord: opmasterleo)");
-      getLogger().info("Using Minecraft's PLAY_ONE_MINUTE statistic for playtime tracking");
-   }
+    @Override
+    public void onEnable() {
+       instance = this;
+       scheduler = new TaskScheduler(this);
+       registerExpansion();
+       
+       getLogger().info(String.format("PlayTimed v%s has been enabled!", getPluginMeta().getVersion()));
+       getLogger().info("Plugin created by OPmasterLEO (Discord: opmasterleo)");
+       getLogger().info("Using Minecraft's PLAY_ONE_MINUTE statistic for playtime tracking");
+    }
 
    @Override
    public void onDisable() {
@@ -32,15 +32,6 @@ public final class Main extends JavaPlugin {
       instance = null;
    }
 
-   private void registerCommands() {
-      SetTicksCMD setTicksCommand = new SetTicksCMD(this);
-      if (getCommand("setticks") != null) {
-         getCommand("setticks").setExecutor(setTicksCommand);
-         getLogger().info("Registered /setticks command");
-      } else {
-         getLogger().warning("Failed to register /setticks command - check plugin.yml");
-      }
-   }
 
    public <T> CompletableFuture<T> runAsync(Supplier<T> supplier) {
       CompletableFuture<T> future = new CompletableFuture<>();
@@ -72,6 +63,15 @@ public final class Main extends JavaPlugin {
       });
       
       return future;
+   }
+
+   private void registerExpansion() {
+      PlayTimedExpansion expansion = new PlayTimedExpansion(this);
+      if (expansion.canRegister() && expansion.register()) {
+         getLogger().info("Registered PlaceholderAPI expansion: %playtime_timed%");
+      } else {
+         getLogger().warning("Failed to register PlaceholderAPI expansion - PlaceholderAPI not installed?");
+      }
    }
 
    public static Main getInstance() {

@@ -5,18 +5,20 @@ plugins {
 }
 
 group = "net.opmasterleo"
-version = "3"
+version = "3.1"
 
 repositories {
     mavenCentral()
     maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://jitpack.io")
+    maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
 }
 
 dependencies {
     paperweight.paperDevBundle("1.21.11-R0.1-SNAPSHOT")
 
     compileOnly("org.jetbrains:annotations:26.0.2")
+    compileOnly("me.clip:placeholderapi:2.11.6")
 }
 
 tasks {
