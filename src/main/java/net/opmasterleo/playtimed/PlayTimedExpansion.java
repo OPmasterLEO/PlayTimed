@@ -4,7 +4,7 @@ import org.bukkit.OfflinePlayer;
 import org.jetbrains.annotations.NotNull;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
-import net.opmasterleo.playtimed.nms.StatisticHandler;
+import net.opmasterleo.playtimed.api.PlayTimedApi;
 
 public class PlayTimedExpansion extends PlaceholderExpansion {
 
@@ -41,27 +41,13 @@ public class PlayTimedExpansion extends PlaceholderExpansion {
 
     @Override
     public String onRequest(OfflinePlayer player, @NotNull String params) {
-        if (player == null || !player.isOnline()) {
+        if (player == null) {
             return "0";
         }
 
         if (params.equalsIgnoreCase("timed") || params.equalsIgnoreCase("playtime")) {
-            int ticks = StatisticHandler.getPlayTime(player.getPlayer());
-            long seconds = ticks / 20L;
-            long days = seconds / 86400;
-            long hours = (seconds % 86400) / 3600;
-            long minutes = (seconds % 3600) / 60;
-            long secs = seconds % 60;
-
-            if (days > 0) {
-                return days + "d " + hours + "h";
-            } else if (hours > 0) {
-                return hours + "h " + minutes + "m";
-            } else if (minutes > 0) {
-                return minutes + "m " + secs + "s";
-            } else {
-                return secs + "s";
-            }
+            PlayTimedApi api = plugin.getApi();
+            return api.formatPlaytime(api.getPlaytimeTicks(player));
         }
 
         return null;

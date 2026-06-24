@@ -3,18 +3,25 @@ package net.opmasterleo.playtimed;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import net.opmasterleo.playtimed.api.PlayTimedApi;
+import net.opmasterleo.playtimed.api.PlayTimedApiImpl;
 import net.opmasterleo.playtimed.scheduler.TaskScheduler;
 
 public final class Main extends JavaPlugin {
    private static Main instance;
    private static TaskScheduler scheduler;
+   private PlayTimedApi api;
 
     @Override
     public void onEnable() {
        instance = this;
        scheduler = new TaskScheduler(this);
+       api = new PlayTimedApiImpl();
+       Bukkit.getServicesManager().register(PlayTimedApi.class, api, this, ServicePriority.Normal);
        registerExpansion();
        
        getLogger().info(String.format("PlayTimed v%s has been enabled!", getPluginMeta().getVersion()));
@@ -27,6 +34,7 @@ public final class Main extends JavaPlugin {
       if (scheduler != null) {
          scheduler.cancelTasks();
       }
+      Bukkit.getServicesManager().unregisterAll(this);
       
       getLogger().info("PlayTimed has been disabled!");
       instance = null;
@@ -80,5 +88,9 @@ public final class Main extends JavaPlugin {
 
    public static TaskScheduler getScheduler() {
       return scheduler;
+   }
+
+   public PlayTimedApi getApi() {
+      return api;
    }
 }
