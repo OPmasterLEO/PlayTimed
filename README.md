@@ -17,9 +17,55 @@ Playtime is read from Minecraft's built-in statistic (`PLAY_TIME` / `PLAY_ONE_MI
 
 ### 1) Add dependency
 
-Add PlayTimed as a `compileOnly` dependency in your plugin.
+You can consume PlayTimed from JitPack.
 
-If you build from local jars, place the PlayTimed jar in your server and development dependencies as you normally do.
+#### Gradle Kotlin DSL (`build.gradle.kts`)
+
+```kotlin
+repositories {
+    mavenCentral()
+    maven("https://jitpack.io")
+}
+
+dependencies {
+    compileOnly("com.github.OPmasterLEO:PlayTimed:main-SNAPSHOT")
+}
+```
+
+If your project centralizes repositories in `settings.gradle.kts`, add JitPack there:
+
+```kotlin
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
+    }
+}
+```
+
+#### Maven (`pom.xml`)
+
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+
+<dependencies>
+    <dependency>
+        <groupId>com.github.OPmasterLEO</groupId>
+        <artifactId>PlayTimed</artifactId>
+        <version>main-SNAPSHOT</version>
+        <scope>provided</scope>
+    </dependency>
+</dependencies>
+```
+
+If resolution fails initially, trigger a JitPack build once at:
+`https://jitpack.io/#OPmasterLEO/PlayTimed/main-SNAPSHOT`
 
 ### 2) Get API instance
 
