@@ -9,6 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import net.opmasterleo.playtimed.api.PlayTimedApi;
 import net.opmasterleo.playtimed.api.PlayTimedApiImpl;
+import net.opmasterleo.playtimed.bstats.Metrics;
 import net.opmasterleo.playtimed.scheduler.TaskScheduler;
 
 public final class Main extends JavaPlugin {
@@ -18,6 +19,8 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+       int pluginId = 32450;
+       Metrics metrics = new Metrics(this, pluginId);
        instance = this;
        scheduler = new TaskScheduler(this);
        api = new PlayTimedApiImpl();
