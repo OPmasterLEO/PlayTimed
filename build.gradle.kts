@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "net.opmasterleo"
-version = "3.2"
+version = "3.2.1"
 
 repositories {
     mavenCentral()
